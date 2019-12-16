@@ -37,13 +37,27 @@ button_5.addEventListener('click',  async() =>
      device =  await navigator.usb.requestDevice({ filters: filters })
     
            await device.open();
-           await device.selectConfiguration(1); // Select configuration #1 
-           await device.claimInterface(0);  // Request control over interface #0.
+            device.selectConfiguration(1); // Select configuration #1 
+            device.claimInterface(0);  // Request control over interface #0.
+
+
+      try 
+      {
+        //ReadyToRating
+         device.transferOut(1, ack_packet3); // 1
+         device.transferIn(1, 64);
+        document.getElementById('result').innerHTML = 'AGUARDANDO_NOTA';
+      } 
+      catch (error) 
+      {
+        console.log(error);  
+        document.getElementById('target').innerHTML = error;    
+      }    
 
       //if (device.serialNumber == SERIAL_NUMBER)
       //{        
         //ReadyToRating
-           await device.transferOut(1, ack_packet3);            
+           //device.transferOut(1, ack_packet3);            
       //}
 //
 // device = await navigator.usb.requestDevice({ 
