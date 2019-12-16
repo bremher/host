@@ -37,13 +37,13 @@ button_5.addEventListener('click',  async() =>
      device =  await navigator.usb.requestDevice({ filters: filters })
     
            await device.open();
-           device.selectConfiguration(1); // Select configuration #1 
-           device.claimInterface(1);  // Request control over interface #0.
+           await device.selectConfiguration(1); // Select configuration #1 
+           await device.claimInterface(0);  // Request control over interface #0.
 
       //if (device.serialNumber == SERIAL_NUMBER)
       //{        
         //ReadyToRating
-           device.transferOut(1, ack_packet3);            
+           await device.transferOut(1, ack_packet3);            
       //}
 //
 // device = await navigator.usb.requestDevice({ 
