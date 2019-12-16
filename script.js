@@ -163,8 +163,8 @@ button_1.addEventListener('click', async() =>
     try 
     {
       //ReadyToRating
-      await device.transferOut(0, ack_packet3); // 1
-      await device.transferIn(0, 64);
+      await device.transferOut(1, ack_packet3); // 1
+      await device.transferIn(1, 64);
       document.getElementById('result').innerHTML = 'AGUARDANDO_NOTA';
     } 
 
